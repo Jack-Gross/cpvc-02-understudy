@@ -3,104 +3,336 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Understudy | CPVC starter</title>
+  <meta name="description" content="A fictional GitHub profile note for a Growth and GTM interview.">
+  <title>Growth interview project note</title>
   <style>
-    :root { color-scheme: light; --paper: #f5f3ed; --ink: #172e33; --teal: #24574e; }
+    :root {
+      color-scheme: light;
+      --paper: #f7f5ef;
+      --ink: #172824;
+      --muted: #5c6965;
+      --line: #cbd1cc;
+      --accent: #3f6f5d;
+      --accent-soft: #e3ece6;
+      --error: #8d3028;
+    }
+
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 Georgia, "Times New Roman", serif; }
-    main { max-width: 760px; margin: auto; padding: 48px 24px; }
-    h1, h2, button, .label { font-family: Arial, sans-serif; }
-    h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.08; letter-spacing: -.035em; margin: 20px 0; }
-    h2 { font-size: 23px; margin: 36px 0 8px; }
-    .label { color: var(--teal); font-size: 13px; letter-spacing: .06em; }
-    p { max-width: 60ch; }
-    dl { margin: 20px 0; }
-    .row { display: flex; justify-content: space-between; gap: 20px; padding: 12px 0; border-bottom: 1px solid #c3cdc5; }
-    dt { flex: 1; }
-    dd { margin: 0; font-family: Arial, sans-serif; font-variant-numeric: tabular-nums; }
-    button { min-height: 44px; padding: 10px 18px; background: var(--teal); color: white; border: 0; font-size: 16px; cursor: pointer; }
-    button:focus-visible, a:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
-    button:active { background: var(--ink); }
-    a { color: var(--teal); text-underline-offset: 3px; }
-    code { overflow-wrap: anywhere; font-size: .9em; }
-    .note { border-top: 2px solid var(--teal); margin-top: 32px; padding-top: 16px; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 18px/1.62 Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      width: min(720px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }
+
+    h1, h2, h3, button, .eyebrow, .field-label, .context-name {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      max-width: 14ch;
+      margin: 10px 0 14px;
+      font-size: 3.15rem;
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin: 42px 0 10px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    p { margin: 0 0 16px; }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin-top: 28px;
+      padding: 22px 24px;
+      border-left: 5px solid var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .answer {
+      max-width: 56ch;
+      margin: 0;
+      font-size: 1.14rem;
+      line-height: 1.55;
+    }
+
+    .next-action {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid #afbeb5;
+    }
+
+    .question {
+      max-width: 57ch;
+      margin-bottom: 14px;
+      font-size: 1.06rem;
+    }
+
+    button {
+      min-height: 46px;
+      padding: 10px 17px;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 120ms ease, transform 120ms ease;
+    }
+
+    button:hover { opacity: 0.9; }
+    button:active { transform: translateY(1px); }
+    button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+    .status {
+      margin: 24px 0;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .status.error { color: var(--error); }
+
+    .evidence {
+      margin: 18px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .field {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 22px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .field-label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .field-value { overflow-wrap: anywhere; }
+
+    .interpretation {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .interpretation p { max-width: 62ch; }
+
+    .caution {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .context-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .context-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .context-name {
+      font-weight: 700;
+    }
+
+    .source-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font: 0.82rem/1.55 Arial, Helvetica, sans-serif;
+    }
+
     [hidden] { display: none !important; }
-    @media (max-width: 400px) { main { padding: 28px 20px; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      button { transition: none; }
+    }
   </style>
 </head>
 <body>
   <main>
-    <p class="label">CPVC / SESSION 02 / FICTIONAL TEACHING DATA</p>
-    <h1>What would you want<br>this reader to understand?</h1>
-    <p>Project counts are a starting point, not a story. Choose one reader and one
-      question before asking an agent to build your answer.</p>
-    <p id="status" role="status" aria-live="polite">Loading the local sample…</p>
-    <button id="retry" type="button" hidden>Try again</button>
-    <section id="snapshot" aria-labelledby="name" hidden>
-      <h2 id="name"></h2>
-      <p id="bio"></p>
-      <dl id="stats"></dl>
-      <p id="source"></p>
-      <p>Only listed projects are available to inspect. A README flag says a file
-        is present, not that it is good. These facts do not establish project quality.</p>
-    </section>
-    <div class="note">
-      <strong>This is the starter, not the answer.</strong>
-      <p>Write your six-line TARGET in SPEC.md. Add one reader rule to AGENTS.md.
-        Then turn these facts into something that helps that person decide.</p>
-      <a href="https://github.com/calpolyvibecoding-01/cpvc-02-understudy-template#readme">Session instructions</a>
-    </div>
+    <p class="eyebrow">Fictional teaching data · Growth/GTM interview prep</p>
+    <h1>Ask about cart-abandon.</h1>
+    <p id="status" class="status" role="status" aria-live="polite">Loading the selected local profile…</p>
+    <button id="retry" type="button" hidden>Try loading again</button>
+
+    <article id="content" hidden>
+      <section class="lead" aria-labelledby="answer-heading">
+        <h2 id="answer-heading" hidden>Answer</h2>
+        <p id="answer" class="answer"></p>
+        <div class="next-action">
+          <h3>Question to ask next</h3>
+          <p id="question" class="question"></p>
+          <button id="copy-question" type="button">Copy question</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="facts-heading">
+        <h2 id="facts-heading">Facts from the profile</h2>
+        <div id="evidence" class="evidence"></div>
+      </section>
+
+      <section class="interpretation" aria-labelledby="interpretation-heading">
+        <h2 id="interpretation-heading">Interpretation</h2>
+        <p id="interpretation"></p>
+        <p class="caution">This identifies a useful interview lead. It does not show that the experiment improved conversion or that the project was successful.</p>
+      </section>
+
+      <section aria-labelledby="context-heading">
+        <h2 id="context-heading">Other projects, for context</h2>
+        <ul id="context-list" class="context-list"></ul>
+      </section>
+
+      <p id="source-note" class="source-note"></p>
+    </article>
   </main>
+
   <script>
-    // Choose ONE fixture named in SPEC.md. Keep the supplied JSON files unchanged.
-    const PROFILE = 'profile-starter.json';
+    const PROFILE = 'profile-consumer.json';
+    const LEAD_PROJECT = 'cart-abandon';
+    const REFERENCE_DATE = '2026-09-11';
+    const INTERVIEW_QUESTION = 'What did you test in the recovery email timing, and what did you learn about when to send?';
+
     const status = document.getElementById('status');
     const retry = document.getElementById('retry');
-    const snapshot = document.getElementById('snapshot');
+    const content = document.getElementById('content');
+    const copyQuestion = document.getElementById('copy-question');
+
+    function addField(label, value) {
+      const row = document.createElement('div');
+      row.className = 'field';
+      const fieldLabel = document.createElement('div');
+      fieldLabel.className = 'field-label';
+      fieldLabel.textContent = label;
+      const fieldValue = document.createElement('div');
+      fieldValue.className = 'field-value';
+      fieldValue.textContent = value;
+      row.append(fieldLabel, fieldValue);
+      document.getElementById('evidence').append(row);
+    }
+
+    function addContextLine(repo) {
+      const item = document.createElement('li');
+      const name = document.createElement('span');
+      name.className = 'context-name';
+      name.textContent = repo.name;
+      const detail = document.createTextNode(
+        ': ' + (repo.description || 'No description supplied') +
+        ' · ' + String(repo.stargazers_count) + ' stars' +
+        (repo.fork ? ' · Fork' : '')
+      );
+      item.append(name, detail);
+      document.getElementById('context-list').append(item);
+    }
 
     async function loadProfile() {
-      snapshot.hidden = true;
+      content.hidden = true;
       retry.hidden = true;
-      status.textContent = 'Loading the local sample…';
+      status.classList.remove('error');
+      status.textContent = 'Loading the selected local profile…';
+
       try {
         const response = await fetch(PROFILE);
-        if (!response.ok) throw new Error('File could not be loaded.');
+        if (!response.ok) throw new Error('The fixture could not be loaded.');
         const data = await response.json();
-        if (!data.profile || !Array.isArray(data.repos) ||
-            data.repos.some(repo => !repo || typeof repo.name !== 'string' || typeof repo.has_readme !== 'boolean')) {
-          throw new Error('The sample needs a profile and a valid repos list.');
+        if (!data.profile || !Array.isArray(data.repos)) {
+          throw new Error('The fixture needs a profile and repos list.');
         }
-        const rows = [
-          ['Listed projects', data.repos.length],
-          ['Listed projects with a README', data.repos.filter(repo => repo.has_readme).length],
-          ['Reported public repos', data.profile.public_repos ?? 'Not supplied']
-        ];
-        document.getElementById('name').textContent = data.profile.name || data.profile.login || 'Unnamed profile';
-        document.getElementById('bio').textContent = data.profile.bio || 'No bio supplied.';
-        const stats = document.getElementById('stats');
-        stats.replaceChildren();
-        for (const [label, value] of rows) {
-          const row = document.createElement('div');
-          row.className = 'row';
-          const term = document.createElement('dt');
-          const detail = document.createElement('dd');
-          term.textContent = label;
-          detail.textContent = String(value);
-          row.append(term, detail);
-          stats.append(row);
+        if (!data.repos.length) {
+          throw new Error('No projects are listed. Restore the selected fixture.');
         }
-        document.getElementById('source').textContent = 'Source: ' + PROFILE + ' · repos.length, repos[].has_readme, profile.public_repos';
-        snapshot.hidden = false;
-        status.textContent = data.repos.length ? 'Local sample loaded. No recommendation has been made.' : 'No listed projects. There is nothing to compare. Choose another supplied file in PROFILE and reload.';
+
+        const lead = data.repos.find(repo => repo && repo.name === LEAD_PROJECT);
+        if (!lead || typeof lead.description !== 'string' ||
+            typeof lead.stargazers_count !== 'number' || !Array.isArray(lead.topics)) {
+          throw new Error('The lead project fields are missing or invalid.');
+        }
+
+        const storefront = data.repos.find(repo => repo && repo.name === 'storefront-kit');
+        if (!storefront || typeof storefront.stargazers_count !== 'number') {
+          throw new Error('The comparison project fields are missing or invalid.');
+        }
+
+        document.getElementById('answer').textContent =
+          'Lead with cart-abandon because its description names recovery email timing experiments, giving this recruiter a concrete conversion-recovery question to explore.';
+        document.getElementById('question').textContent = INTERVIEW_QUESTION;
+
+        const evidence = document.getElementById('evidence');
+        evidence.replaceChildren();
+        addField('repos[].name', lead.name);
+        addField('repos[].description', lead.description);
+        addField('repos[].stargazers_count', String(lead.stargazers_count));
+        addField('repos[].topics', lead.topics.length ? lead.topics.join(', ') : 'Empty list');
+        addField('Comparison', storefront.name + ': ' + String(storefront.stargazers_count) + ' stars');
+
+        document.getElementById('interpretation').textContent =
+          'The description makes cart-abandon the clearest Growth/GTM interview lead in this fixture. It names an experiment and a conversion-recovery mechanism. Its ' +
+          String(lead.stargazers_count) + ' stars, compared with ' + String(storefront.stargazers_count) +
+          ' for storefront-kit, are context rather than evidence of business impact.';
+
+        const contextList = document.getElementById('context-list');
+        contextList.replaceChildren();
+        data.repos.filter(repo => repo.name !== LEAD_PROJECT).forEach(addContextLine);
+
+        document.getElementById('source-note').textContent =
+          'Source: ' + PROFILE + ' · Fields used: repos[].name, repos[].description, repos[].stargazers_count, repos[].topics, repos[].fork · Reference date: ' + REFERENCE_DATE;
+
+        content.hidden = false;
+        status.textContent = 'Selected fictional profile loaded.';
       } catch (error) {
-        status.textContent = 'Could not read the sample. Check the PROFILE filename and JSON, then try again. Use GitHub Pages or a local web server, not a double-clicked file.';
+        status.classList.add('error');
+        status.textContent = error.message + ' Check profile-consumer.json, serve this page over HTTP, then try again.';
         retry.hidden = false;
       }
     }
+
+    async function copyInterviewQuestion() {
+      try {
+        await navigator.clipboard.writeText(INTERVIEW_QUESTION);
+        copyQuestion.textContent = 'Question copied';
+      } catch (error) {
+        copyQuestion.textContent = 'Copy failed. Select the question above.';
+      }
+      window.setTimeout(() => { copyQuestion.textContent = 'Copy question'; }, 2200);
+    }
+
     retry.addEventListener('click', loadProfile);
+    copyQuestion.addEventListener('click', copyInterviewQuestion);
     loadProfile();
-    // Open-build test: use a nonexistent filename, inspect the message, then
-    // RESTORE PROFILE and reload successfully before reviewing and merging.
   </script>
 </body>
 </html>
+
