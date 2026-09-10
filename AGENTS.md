@@ -5,8 +5,7 @@ unclear, ask before editing. This file briefs the agent; it does not run the pag
 
 ## My reader rule
 
-[Replace with one observable rule. Example: explain each project in ordinary
-language before showing technical terms, without inventing a missing purpose.]
+State the lead project and the growth-relevant reason in one sentence before showing any other repo. Never call a project successful or effective, only tied to a specific growth lever like acquisition, conversion or retention, and name which field supports that.
 
 ## Scope and evidence
 
